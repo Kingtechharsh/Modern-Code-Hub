@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>Modern Code Hub</title>
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #222;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+            .navbar img {
+                height: 50px;
+            }
+
+            .navbar ul {
+                list-style: none;
+                display: flex;
+                gap: 15px;
+            }
+
+                .navbar ul li a {
+                    color: white;
+                    text-decoration: none;
+                    padding: 8px 16px;
+                    font-weight: bold;
+                    transition: color 0.3s;
+                }
+
+                    .navbar ul li a:hover {
+                        color: #007bff;
+                    }
+
+            .navbar .buttons a {
+                color: white;
+                text-decoration: none;
+                padding: 8px 16px;
+                border: 1px solid white;
+                border-radius: 5px;
+                font-weight: bold;
+                transition: background-color 0.3s;
+            }
+
+                .navbar .buttons a:hover {
+                    background-color: #007bff;
+                }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            text-align: center;
+            color: white;
+            height: 100vh;
+            background: url('img/modern-office-design.png') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .hero a {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+
+            .hero a:hover {
+                background-color: #0056b3;
+            }
+
+
+
+        /* About Section */
+        .about-section {
+            background-color: black; /* Blue background */
+            padding: 60px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .about-container {
+            background-color: black; /* White box container */
+            color: #333;
+            padding: 40px;
+            border-radius: 8px;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+            .about-container h2 {
+                font-size: 2rem;
+                color: #007bff;
+                margin-bottom: 10px;
+                font-weight: bold;
+            }
+
+            .about-container h3 {
+                font-size: 1.2rem;
+                color: #555;
+                margin-bottom: 20px;
+            }
+
+            .about-container p {
+                font-size: 1rem;
+                color: #666;
+                margin-bottom: 30px;
+                line-height: 1.6;
+            }
+
+            .about-container button {
+                padding: 10px 20px;
+                font-size: 1rem;
+                color: #007bff;
+                background-color: #fff;
+                border: 2px solid #007bff;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+                transition: background-color 0.3s, color 0.3s;
+            }
+
+                .about-container button:hover {
+                    background-color: #007bff;
+                    color: #fff;
+                }
+        /* Services Section */
+        .services {
+            padding: 50px 20px;
+            text-align: center; /* Center-align text in the section */
+        }
+
+        .services-header {
+            max-width: 700px;
+            margin: 0 auto 40px; /* Center the header container */
+        }
+
+            .services-header h2 {
+                font-size: 2.5rem;
+                margin: 20px 0;
+            }
+
+            .services-header p {
+                color: #555;
+            }
+
+        .service-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* Flip Card */
+        .service-card {
+            width: 200px;
+            height: 250px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .service-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Card Front */
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .flip-card-front {
+            background-color: #fff;
+        }
+
+            .flip-card-front h3 {
+                margin: 15px 0;
+                font-size: 1.2rem;
+                color: #333;
+            }
+
+            .flip-card-front p {
+                font-size: 0.9rem;
+                color: #666;
+            }
+
+        /* Card Back */
+        .flip-card-back {
+            background-color: #007bff;
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+            .flip-card-back h3 {
+                margin-bottom: 10px;
+            }
+
+            .flip-card-back p {
+                font-size: 0.9rem;
+                margin-bottom: 15px;
+            }
+
+            .flip-card-back button {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+                background-color: white;
+                color: #007bff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+                transition: background-color 0.3s, color 0.3s;
+            }
+
+                .flip-card-back button:hover {
+                    background-color: #0056b3;
+                    color: white;
+                }
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 50px 20px;
+            background-color: #111; /* Dark background for the team section */
+            color: white;
+            text-align: center; /* Center text in the entire section */
+        }
+
+        .team-header {
+            max-width: 600px;
+            margin: 0 auto 40px; /* Center align with margin auto and add bottom space */
+        }
+
+        .team h2 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .team p {
+            font-size: 1rem;
+            color: #ccc;
+            margin-bottom: 40px;
+        }
+
+        .team-members {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .team-member {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            padding: 20px;
+            background-color: #222; /* Darker box for each team member */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+            .team-member img {
+                width: 100px;
+                height: 100px;
+                border-radius: 8px;
+                object-fit: cover;
+            }
+
+        .team-member-content {
+            flex: 1;
+            text-align: left; /* Align text to the left in each team member card */
+        }
+
+        .team-member h3 {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .team-member span {
+            font-size: 0.9rem;
+            color: #aaa;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .team-member p {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+
+        .team-member button {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            color: #111;
+            background-color: #fff;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .team-member button:hover {
+                background-color: #444;
+                color: #fff;
+            }
+
+
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 50px 20px;
+            background-color: #f8f9fa; /* Light gray background for section */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contact-container {
+            background-color: #fff; /* White box container */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            padding: 40px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .contact h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .contact p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .contact label {
+            font-size: 0.9rem;
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+            font-weight: bold;
+        }
+
+        .contact input[type="text"],
+        .contact input[type="email"],
+        .contact textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .contact textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .contact .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .contact input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .contact button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+            .contact button:hover {
+                background-color: #0056b3;
+            }
+        /* Footer */
+        .footer {
+            background-color: #222;
+            color: #ddd;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+            .footer h3 {
+                color: #fff;
+                margin-bottom: 15px;
+                font-size: 1.2rem;
+            }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+
+            .footer-section a {
+                color: #ddd;
+                text-decoration: none;
+                display: block;
+                margin-bottom: 10px;
+                transition: color 0.3s;
+            }
+
+                .footer-section a:hover {
+                    color: #fff;
+                }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .footer-map iframe {
+            width: 100%;
+            height: 150px;
+            border: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1 style="color: white;">Modern Code Hub</h1>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="project.html">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="buttons">
+            <a href="#team">TEAM</a>
+            <a href="appointment.html">MAKE AN APPOINTMENT</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Welcome to Modern Code Hub</h1>
+            <p>Software Solutions</p>
+            <a href="#services">View Services</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section"  id="about">
+        <div class="about-container">
+            <h2>About Harsh</h2>
+            <h3>Explore our story</h3>
+            <p>At Harsh, we are proud to be a part of the vibrant community in Springfield. Our passion for excellence and commitment to customer satisfaction drive everything we do. Get to know us and experience the difference.</p>
+            <button>GET IN TOUCH</button>
+        </div>
+    </section>
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2>Our Services</h2>
+        <p>From our battle-tested process to our reliable client care, we’re here for you. Our wide range of services is backed by industry knowledge and our passion to help clients find solutions perfectly tailored to their needs.</p>
+        <div class="service-cards">
+            <!-- Web Design Card -->
+            <div class="service-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span class="material-icons" style="font-size:40px; color:#007bff;">computer</span>
+                        <h3>Web Design</h3>
+                        <p>Create stunning and user-friendly websites for your business.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Web Design</h3>
+                        <p>Let us build a professional website tailored to your brand.</p>
+                        <button>Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- E-Commerce Card -->
+            <div class="service-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span class="material-icons" style="font-size:50px;">shopping_cart</span>
+                        <h3>E-Commerce</h3>
+                        <p>Improve your website’s visibility and ranking on search engines.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>E-Commerce</h3>
+                        <p>Boost your sales with our custom e-commerce solutions.</p>
+                        <button>Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Media Marketing Card -->
+            <div class="service-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span class="material-icons" style="font-size:50px;">share</span>
+                        <h3>Social Media Marketing</h3>
+                        <p>Boost your brand’s presence and engagement on social media platforms.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Social Media Marketing</h3>
+                        <p>Connect with your audience and increase brand awareness.</p>
+                        <button>Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logo Design Card -->
+            <div class="service-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span class="material-icons" style="font-size:40px;">format_paint</span>
+                        <h3>Logo Design</h3>
+                        <p>Craft engaging and SEO-friendly content for your website and marketing materials.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Logo Design</h3>
+                        <p>Create a unique and memorable logo for your brand.</p>
+                        <button>Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Graphic Design Card -->
+            <div class="service-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span class="material-icons" style="font-size:40px;">brush</span>
+                        <h3>Graphic Design</h3>
+                        <p>Create visually appealing graphics and materials for your brand.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Graphic Design</h3>
+                        <p>Get custom-designed graphics that represent your brand.</p>
+                        <button>Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email Marketing Card -->
+            <div class="service-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span class="material-icons" style="font-size:40px; color:#007bff;">email</span>
+                        <h3>Email Marketing</h3>
+                        <p>Engage your audience and drive conversions through targeted email campaigns.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Email Marketing</h3>
+                        <p>Stay connected with your customers through effective email campaigns.</p>
+                        <button>Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flyers Design Card -->
+            <div class="service-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span class="material-icons" style="font-size:40px; color:#007bff;">insert_drive_file</span>
+                        <h3>Flyers Design</h3>
+                        <p>Create a stunning promotional flyer or any social media design.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Flyers Design</h3>
+                        <p>Design professional flyers that capture attention.</p>
+                        <button>Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Property Management System Card -->
+            <div class="service-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span class="material-icons" style="font-size:40px; color:#007bff;">business</span>
+                        <h3>Property Management System (PMS)</h3>
+                        <p>A system to facilitate hotel reservation management and administrative tasks.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Property Management System (PMS)</h3>
+                        <p>Efficiently manage reservations and property data with our PMS solutions.</p>
+                        <button>Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team" id="team">
+        <h2>Learn more about our team</h2>
+        <p>Our team brings extensive professional experience to assist businesses with their diverse needs. Our passion for helping our clients is what unites us. We can’t wait to work with you.</p>
+        <div class="team-members">
+            <div class="team-member">
+                <img src="img/Harsh.jpeg" alt="Harsh Panchal"> <!-- Replace with actual image path -->
+                <div class="team-member-content">
+                    <h3>Harsh Panchal</h3>
+                    <span>Founder and CEO</span>
+                    <p>Harsh is our founder and both willing and able to help you with whatever you need. He’s been here from the beginning to make sure everything’s running smoothly.</p>
+                    <button>READ MORE</button>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="member2.jpg" alt="Vidhi Shah"> <!-- Replace with actual image path -->
+                <div class="team-member-content">
+                    <h3>Rahet Ahmed</h3>
+                    <span>Executive</span>
+                    <p>Vidhi has worked here for over five years. She’s successfully negotiated hundreds of deals, which often involved difficult and complex matters.</p>
+                    <button>READ MORE</button>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="member3.jpg" alt="Naveen Adala"> <!-- Replace with actual image path -->
+                <div class="team-member-content">
+                    <h3>Naveen Adala</h3>
+                    <span>Manager</span>
+                    <p>Naveen is known for his leadership skills and commitment to achieving results. He has been instrumental in driving the company forward.</p>
+                    <button>READ MORE</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <h2>Contact Me</h2>
+            <p>Feel free to give me a call or send me an email with any questions or comments you have. I would love to hear from you, whether you are interested in working together or just want to say hello.</p>
+            <form>
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+
+                <label for="email">Email address *</label>
+                <input type="email" id="email" name="email" placeholder="email@website.com" required>
+
+                <label for="phone">Phone number *</label>
+                <input type="text" id="phone" name="phone" placeholder="555-555-5555" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Your message here"></textarea>
+
+                <div class="checkbox-container">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <label for="consent">I allow this website to store my submission so they can respond to my inquiry.</label>
+                </div>
+
+                <button type="submit">SUBMIT</button>
+            </form>
+        </div>
+    </section>
+    <!-- Footer Section -->
+    <footer class="footer">
+        <!-- Logo or Name Section -->
+        <div class="footer-section">
+            <div class="footer-logo">Mordern Code Hub</div>
+        </div>
+
+        <!-- Menu Section -->
+        <div class="footer-section">
+            <h3>Menu</h3>
+            <a href="#home">Home</a>
+            <a href="#appointment">Schedule Appointment</a>
+            <a href="#intake">Complete Intake</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <p>
+                1025 Marco Ln Apt B<br>
+                Springfield, Illinois 62712<br>
+                United States
+            </p>
+            <a href="mailto:hpanchal2017@gmail.com">hpanchal2017@gmail.com</a>
+            <a href="tel:217-862-4120">217-862-4120</a>
+        </div>
+
+        <!-- Directions Section -->
+        <div class="footer-section footer-map">
+            <h3>Directions</h3>
+            <!-- Embed Google Maps iframe -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509398!2d144.95565131531875!3d-37.81732797975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f0028fbb%3A0x5045675218ce6e0!2sVictoria!5e0!3m2!1sen!2sau!4v1614243521683!5m2!1sen!2sau" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </footer>
+
+</body>
+</html>
