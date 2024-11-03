@@ -8,13 +8,13 @@
         /* General styling */
         * {
             box-sizing: border-box;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
         }
 
         body {
-            background: linear-gradient(to right, #f8f9fa, #e3e4e6);
+            background-color: #f4f4f4;
             color: #333;
         }
 
@@ -23,21 +23,33 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
-            background-color: #222;
+            padding: 20px 40px;
+            background-color: black;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
+            /* Logo Styling */
             .navbar img {
-                height: 50px;
+                height: 110px; /* Increase the logo size */
+                padding: 5px;
+                margin-right: 20px;
+                border-radius: 18px; /* Optional: add rounded corners */
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
             }
 
+                .navbar img:hover {
+                    transform: scale(1.1); /* Slight zoom effect on hover */
+                    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4); /* Subtle shadow */
+                }
+
+            /* Navbar Links */
             .navbar ul {
                 list-style: none;
                 display: flex;
-                gap: 15px;
+                gap: 20px;
+                margin: 0;
             }
 
                 .navbar ul li a {
@@ -45,6 +57,7 @@
                     text-decoration: none;
                     padding: 8px 16px;
                     font-weight: bold;
+                    font-size: 1rem;
                     transition: color 0.3s;
                 }
 
@@ -52,6 +65,7 @@
                         color: #007bff;
                     }
 
+            /* Buttons */
             .navbar .buttons a {
                 color: white;
                 text-decoration: none;
@@ -59,12 +73,74 @@
                 border: 1px solid white;
                 border-radius: 5px;
                 font-weight: bold;
-                transition: background-color 0.3s;
+                margin-left: 10px;
+                transition: background-color 0.3s, color 0.3s;
             }
 
                 .navbar .buttons a:hover {
                     background-color: #007bff;
+                    color: white;
                 }
+
+        /* Adjust for smaller screens */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+
+                .navbar ul {
+                    flex-direction: column;
+                    gap: 10px;
+                }
+
+                .navbar .buttons {
+                    margin-top: 10px;
+                }
+        }
+        /* Hero Banner */
+        .hero-banner {
+            background-image: url('https://media.istockphoto.com/id/1502289545/vector/technology-of-software-development-web-design-programming-concept-program-code-on-screen.jpg?s=612x612&w=0&k=20&c=IjkXl6uCuINBjLKmCq95TnhSQaHSAcJE2HzcNK42tv4='); /* Replace with your own image URL */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+
+            /* Optional: Add an overlay to darken the background image for better text contrast */
+            .hero-banner::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.4); /* Adjust the opacity as needed */
+                z-index: 1;
+            }
+
+            .hero-banner h1,
+            .hero-banner p {
+                z-index: 2;
+                position: relative;
+            }
+
+            .hero-banner h1 {
+                font-size: 3rem;
+                margin-bottom: 10px;
+            }
+
+            .hero-banner p {
+                font-size: 1.2rem;
+            }
+
         /* Projects Section */
         .projects-section {
             padding: 60px 20px;
@@ -74,78 +150,83 @@
             .projects-section h2 {
                 font-size: 2.5rem;
                 color: #333;
-                margin-bottom: 20px;
+                margin-bottom: 10px;
             }
 
             .projects-section p {
                 color: #666;
+                font-size: 1rem;
                 margin-bottom: 50px;
                 max-width: 700px;
-                margin-left: auto;
-                margin-right: auto;
+                margin: 0 auto;
                 line-height: 1.6;
             }
 
-        /* Project Cards */
+        /* Project Cards Container */
         .project-cards {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
+        /* Project Card */
         .project-card {
             background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
             overflow: hidden;
-            width: 300px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
         }
 
             .project-card:hover {
-                transform: translateY(-10px);
-                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+                transform: translateY(-5px);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             }
 
+        /* Project Image */
         .project-image {
-            background-color: #ddd;
-            height: 180px;
             width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
         }
 
-        .project-card-content {
+        /* Project Content */
+        .project-content {
             padding: 20px;
-            text-align: left;
         }
 
-        .project-card h3 {
-            color: #007bff;
-            margin-bottom: 10px;
-            font-size: 1.5rem;
+        .project-title {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 8px;
         }
 
-        .project-card p {
-            color: #555;
+        .project-description {
+            color: #666;
             font-size: 0.95rem;
             line-height: 1.5;
             margin-bottom: 15px;
         }
 
-        .project-card a {
-            text-decoration: none;
+        .project-link {
             color: #007bff;
+            text-decoration: none;
             font-weight: bold;
             transition: color 0.3s;
         }
 
-            .project-card a:hover {
+            .project-link:hover {
                 color: #0056b3;
             }
 
         /* Footer */
         .footer {
-            background-color: #222;
+            background-color: black;
             color: #ddd;
             padding: 40px 20px;
             display: flex;
@@ -189,88 +270,161 @@
             border: none;
             border-radius: 8px;
         }
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .project-cards {
+                grid-template-columns: 1fr; /* Stack cards on smaller screens */
+            }
+        }
     </style>
 </head>
 <body>
 
     <!-- Navbar -->
     <div class="navbar">
-        <h1 style="color: white;">Modern Code Hub</h1>
+        <img src="img/Logo2.PNG" alt="Modern Code Hub Logo"> <!-- Replace with your actual logo path -->
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html">About</a></li>
-            <li><a href="index.html">Services</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
             <li><a href="project.html">Projects</a></li>
-            <li><a href="index.html">Contact</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="buttons">
             <a href="#team">TEAM</a>
             <a href="appointment.html">MAKE AN APPOINTMENT</a>
         </div>
     </div>
+
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <h1>We’re proud of what we do</h1>
+        <p>Here's some of our recent work</p>
+    </div>
+
     <!-- Projects Section -->
     <section class="projects-section" id="projects">
-        <h2>Our Projects</h2>
-        <p>Take a look at some of our recent work. We specialize in crafting custom solutions that help our clients achieve their business goals.</p>
+        <h2>Explore our previous projects</h2>
+        <p>Discover the IT solutions we've provided across a range of industries, from e-commerce to software development.</p>
 
         <div class="project-cards">
-            <!-- Project 1 -->
+            <!-- Project Card 1 -->
             <div class="project-card">
-                <div class="project-image" style="background-image: url('https://via.placeholder.com/300x180');"></div>
-                <div class="project-card-content">
-                    <h3>Project Alpha</h3>
-                    <p>An innovative e-commerce platform designed to boost sales and improve user experience.</p>
-                    <a href="#">Learn More</a>
+                <div class="project-image" style="background-image: url('https://www.iwdagency.com/cdn/shop/articles/eCommerce_Platform_Pic_2000x.jpg?v=1698957713');"></div>
+                <div class="project-content">
+                    <h3 class="project-title">E-commerce Platform</h3>
+                    <p class="project-description">Developed a scalable e-commerce platform with integrated payment solutions.</p>
+                    <a href="#" class="project-link">Learn more</a>
                 </div>
             </div>
 
-            <!-- Project 2 -->
+            <!-- Project Card 2 -->
             <div class="project-card">
-                <div class="project-image" style="background-image: url('https://via.placeholder.com/300x180');"></div>
-                <div class="project-card-content">
-                    <h3>Project Beta</h3>
-                    <p>A custom website redesign for a local business, focusing on responsive design and SEO optimization.</p>
-                    <a href="#">Learn More</a>
+                <div class="project-image" style="background-image: url('https://media.licdn.com/dms/image/D4D12AQF3eFDY511i0Q/article-cover_image-shrink_720_1280/0/1710821099769?e=2147483647&v=beta&t=CUrQDOBod-22fQywqftkRpDrkzQPm6GyxSmeJ6Y8k6o');"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Custom CRM System</h3>
+                    <p class="project-description">Built a CRM to streamline customer interactions and data tracking.</p>
+                    <a href="#" class="project-link">Learn more</a>
                 </div>
             </div>
 
-            <!-- Project 3 -->
+            <!-- Project Card 3 -->
             <div class="project-card">
-                <div class="project-image" style="background-image: url('https://via.placeholder.com/300x180');"></div>
-                <div class="project-card-content">
-                    <h3>Project Gamma</h3>
-                    <p>A full-featured property management system (PMS) for efficient reservation and property management.</p>
-                    <a href="#">Learn More</a>
+                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c');"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Inventory Management</h3>
+                    <p class="project-description">Designed an automated system for tracking stock levels and orders.</p>
+                    <a href="#" class="project-link">Learn more</a>
                 </div>
             </div>
 
-            <!-- Project 4 -->
+            <!-- Project Card 4 -->
             <div class="project-card">
-                <div class="project-image" style="background-image: url('https://via.placeholder.com/300x180');"></div>
-                <div class="project-card-content">
-                    <h3>Project Delta</h3>
-                    <p>A social media marketing campaign for a startup, enhancing brand visibility and engagement.</p>
-                    <a href="#">Learn More</a>
+                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2');"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Mobile App Development</h3>
+                    <p class="project-description">Developed a cross-platform mobile app for customer engagement.</p>
+                    <a href="#" class="project-link">Learn more</a>
                 </div>
             </div>
 
-            <!-- Project 5 -->
+            <!-- Project Card 5 -->
             <div class="project-card">
-                <div class="project-image" style="background-image: url('https://via.placeholder.com/300x180');"></div>
-                <div class="project-card-content">
-                    <h3>Project Epsilon</h3>
-                    <p>Developed a mobile-friendly website for an online learning platform, improving accessibility and engagement.</p>
-                    <a href="#">Learn More</a>
+                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1593642634367-d91a135587b5');"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Data Analytics Dashboard</h3>
+                    <p class="project-description">Created a dashboard for real-time data insights and analytics.</p>
+                    <a href="#" class="project-link">Learn more</a>
                 </div>
             </div>
 
-            <!-- Project 6 -->
+            <!-- Project Card 6 -->
             <div class="project-card">
-                <div class="project-image" style="background-image: url('https://via.placeholder.com/300x180');"></div>
-                <div class="project-card-content">
-                    <h3>Project Zeta</h3>
-                    <p>Custom CRM development for a real estate firm to manage leads and streamline communication.</p>
-                    <a href="#">Learn More</a>
+                <div class="project-image" style="background-image: url('https://rocketivy.com/wp-content/uploads/2019/09/rocket-ivy-web-page-redesign.jpg'); "></div>
+                <div class="project-content">
+                    <h3 class="project-title">Website Redesign</h3>
+                    <p class="project-description">Redesigned a website to improve user experience and SEO.</p>
+                    <a href="#" class="project-link">Learn more</a>
+                </div>
+            </div>
+
+            <!-- Project Card 7 -->
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://stl.tech/wp-content/uploads/2023/07/cloud-migration.webp');"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Cloud Migration</h3>
+                    <p class="project-description">Assisted a business in migrating their services to the cloud.</p>
+                    <a href="#" class="project-link">Learn more</a>
+                </div>
+            </div>
+
+            <!-- Project Card 8 -->
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://snb.thesagenext.com/blog/wp-content/uploads/2021/04/Network-Security-4.png');"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Network Security</h3>
+                    <p class="project-description">Implemented a secure network infrastructure for enhanced protection.</p>
+                    <a href="#" class="project-link">Learn more</a>
+                </div>
+            </div>
+
+            <!-- Project Card 9 -->
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://ordersinseconds.com/wp-content/uploads/2022/04/erp-system-850-1280x720-1-jpg.webp');"></div>
+                <div class="project-content">
+                    <h3 class="project-title">ERP System</h3>
+                    <p class="project-description">Developed a custom ERP solution for business process automation.</p>
+                    <a href="#" class="project-link">Learn more</a>
+                </div>
+            </div>
+
+            <!-- Project Card 10 -->
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiCWQajdJgNcCauUArovQEyyAU9JeSWOcpP4jFSdhnJ47SWyWSsACGvmnDcMyKTV_B29Xc6EycG0N2fCFc6vGGBD3dOlULGLmmB-qYrUuZ4yFmRen_DgKex9OyNg5TDq1XT-o_Yl0l6qlCZvLMebHe-8o3JXXteLb6kXKdHaK5FoVlMaOYi5X9ZsHt-dw/s600/Payment%20Gateway.jpg');"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Payment Gateway Integration</h3>
+                    <p class="project-description">Integrated payment gateway to enhance e-commerce capabilities.</p>
+                    <a href="#" class="project-link">Learn more</a>
+                </div>
+            </div>
+
+            <!-- Project Card 11 -->
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://www.einfochips.com/wp-content/uploads/2018/08/a-complete-guide-to-chatbot-development-from-tools-to-best-practices-featured.jpg');"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Chatbot Development</h3>
+                    <p class="project-description">Created a chatbot to improve customer service interactions.</p>
+                    <a href="#" class="project-link">Learn more</a>
+                </div>
+            </div>
+
+            <!-- Project Card 12 -->
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://www.sparsadigital.in/wp-content/uploads/2022/12/Content-Management-System.jpg');"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Content Management System</h3>
+                    <p class="project-description">Built a custom CMS for efficient content publishing.</p>
+                    <a href="#" class="project-link">Learn more</a>
                 </div>
             </div>
         </div>
@@ -280,7 +434,7 @@
     <footer class="footer">
         <!-- Logo or Name Section -->
         <div class="footer-section">
-            <div class="footer-logo">Mordern Code Hub</div>
+            <img src="img/Logo2.PNG" alt="Modern Code Hub Logo"> <!-- Replace with your actual logo path -->
         </div>
 
         <!-- Menu Section -->
