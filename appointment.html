@@ -3,63 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Make an Appointment</title>
     <style>
-       /* General reset */
-       * {
-            margin: 0;
-            padding: 0;
+        /* General styling */
+        * {
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
 
-        /* Navbar */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background-color: #222;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
         }
 
-            .navbar img {
-                height: 75px;
+        /* Navbar Styles */
+        .navbar {
+            padding: 15px 20px;
+            background: #1a1a2e; /* Deep Blue Background */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            color: #f5b921; /* Gold Accent */
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: color 0.3s ease-in-out;
+        }
+
+            .navbar-brand:hover {
+                color: #d4af37; /* Slightly Brighter Gold on Hover */
             }
 
-            .navbar ul {
-                list-style: none;
-                display: flex;
-                gap: 15px;
+        .nav-link {
+            color: #e0e0e0;
+            padding: 10px 15px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+            margin-right: 10px;
+            border-radius: 25px;
+        }
+
+            .nav-link:hover {
+                color: #f5b921; /* Gold on Hover */
+                background-color: rgba(245, 185, 33, 0.15); /* Light Gold Transparent Background */
+                transform: translateY(-2px);
             }
 
-                .navbar ul li a {
-                    color: white;
-                    text-decoration: none;
-                    padding: 8px 16px;
-                    font-weight: bold;
-                    transition: color 0.3s;
-                }
-
-                    .navbar ul li a:hover {
-                        color: #007bff;
-                    }
-
-            .navbar .buttons a {
-                color: white;
-                text-decoration: none;
-                padding: 8px 16px;
-                border: 1px solid white;
-                border-radius: 5px;
-                font-weight: bold;
-                transition: background-color 0.3s;
+            .nav-link.active {
+                color: #f5b921;
+                font-weight: 600;
+                background-color: rgba(245, 185, 33, 0.2);
             }
 
-                .navbar .buttons a:hover {
-                    background-color: #007bff;
-                }
+        .navbar-toggler {
+            border: none;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23e0e0e0" viewBox="0 0 30 30"%3E%3Cpath stroke="rgba%28224, 224, 224, 0.7%29" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+        }
+
+        @media (max-width: 992px) {
+            .nav-link {
+                padding: 10px;
+                text-align: center;
+                margin-right: 0;
+                margin-bottom: 5px;
+            }
+        }
 
         /* Appointment Section */
         .appointment-section {
@@ -206,111 +227,45 @@
             border: none;
             border-radius: 8px;
         }
-        /* Hide menu toggle button on larger screens */
-@media (min-width: 769px) {
-    .menu-toggle {
-        display: none; /* Hide the toggle button */
-    }
-
-    .navbar ul {
-        display: flex !important; /* Ensure the menu is always visible on desktop */
-        flex-direction: row; /* Ensure horizontal layout */
-        gap: 20px; /* Add spacing between items */
-    }
-}
-
-
-        @media (max-width: 768px) {
-    .navbar {
-        flex-direction: row; /* Ensure items stay in a row */
-        justify-content: space-between; /* Space between logo and toggle */
-        align-items: center;
-        padding: 10px 20px;
-    }
-
-    .navbar-logo {
-        flex: 1; /* Ensure logo stays on the left */
-        text-align: left; /* Align logo to the left */
-    }
-
-    .menu-toggle {
-        flex: 0; /* Ensure toggle stays on the right */
-        display: block;
-        font-size: 1.5rem;
-        color: white;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 10px;
-        text-align: right; /* Align toggle to the right */
-    }
-
-    .navbar ul {
-        display: none; /* Hide menu by default */
-        flex-direction: column;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        background-color: #222; /* Match navbar background */
-        position: absolute;
-        top: 100%;
-        left: 0;
-        border-top: 1px solid #444;
-    }
-
-    .navbar ul li {
-        border-bottom: 1px solid #444; /* Add a line between items */
-        text-align: center;
-    }
-
-    .navbar ul li:last-child {
-        border: none; /* Remove border from the last item */
-    }
-
-    .navbar ul.active {
-        display: flex; /* Show the menu when active */
-    }
-
-    /* Buttons inside the menu */
-    .menu-button {
-        display: inline-block;
-        margin: 15px auto;
-        padding: 10px 16px;
-        border: 2px solid white; /* Outline button style */
-        border-radius: 5px;
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        text-align: center;
-        width: 80%; /* Make buttons uniform */
-        transition: background-color 0.3s, color 0.3s;
-    }
-
-    .menu-button:hover {
-        background-color: white; /* Invert colors on hover */
-        color: black;
-    }
-
-    
-        }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="navbar-logo">
-            <img src="img/MCHLOGO (1).png" alt="Modern Code Hub Logo">
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" alt="Modern Code Hub Logo" style="height: 40px; width: auto;" class="me-2">
+                <!-- Adjust height and width as needed -->
+                Modern Code Hub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Projects.html">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Contact</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="appointment.html">Make an Appoinment</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#about" >About</a></li>
-            <li><a href="index.html">Services</a></li>
-            <li><a href="project.html">Projects</a></li>
-            <li><a href="index.html">Contact</a></li>
-            <li><a href="index.html" class="menu-button">TEAM</a></li>
-            <li><a href="appointment.html" class="menu-button">MAKE AN APPOINTMENT</a></li>
-        </ul>
-    </div>
+    </nav>
     <!-- Appointment Section -->
     <section class="appointment-section">
         <div class="appointment-container">
@@ -402,21 +357,6 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509398!2d144.95565131531875!3d-37.81732797975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f0028fbb%3A0x5045675218ce6e0!2sVictoria!5e0!3m2!1sen!2sau!4v1614243521683!5m2!1sen!2sau" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </footer>
-
-    <script>
-        function toggleMenu() {
-            const menu = document.querySelector('.navbar ul');
-            menu.classList.toggle('active');
-        }
-        
-        // Close the menu when a menu item is clicked
-        document.querySelectorAll('.navbar ul li a').forEach(item => {
-            item.addEventListener('click', () => {
-                const menu = document.querySelector('.navbar ul');
-                menu.classList.remove('active');
-            });
-        });
-        </script>      
 
 </body>
 </html>
