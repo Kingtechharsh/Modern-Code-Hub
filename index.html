@@ -348,6 +348,19 @@
         .service-card:hover .event-box {
             opacity: 1;
         }
+        .navbar .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.5rem 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar .btn {
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+        }
 
     </style>
 </head>
@@ -358,7 +371,6 @@
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="img/logo.png" alt="Modern Code Hub Logo" style="height: 40px; width: auto;" class="me-2">
-                <!-- Adjust height and width as needed -->
                 Modern Code Hub
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -384,15 +396,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="appointment.html">Make an Appointment</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="tel:+18622647261" class="btn btn-sm btn-warning ms-2 d-lg-inline-flex align-items-center">
+                            <i class="material-icons me-2">phone</i>862-264-7261
+                        </a>
+                    </li>
                 </ul>
-                <!-- Phone Button -->
-
-                <a href="tel:+18622647261" class="btn btn-sm btn-warning ms-2 d-none d-lg-inline-flex align-items-center">
-                    <i class="material-icons me-2">phone</i>862-264-7261
-                </a>
             </div>
         </div>
     </nav>
+
 
 
     <!-- Hero Section -->
@@ -921,64 +934,49 @@
 
         // Mailtrap SMTP Configuration
         const transporter = nodemailer.createTransport({
-            host: 'sandbox.smtp.mailtrap.io',
-            port: 25, // Use the port you prefer (25, 465, 587, or 2525)
+            host: 'sandbox.smtp.mailtrap.io', // Mailtrap SMTP host
+            port: 587, // Use any supported port: 25, 465, 587, 2525
             auth: {
                 user: '9fddb10a87be5c', // Mailtrap Username
-                pass: 'c9d31da946a923', // Replace with your Mailtrap password
+                pass: 'c9d31da946a923', // Mailtrap Password
+            },
+            secure: false, // Use true for port 465, false otherwise
+            tls: {
+                rejectUnauthorized: false, // Optional, disable certificate validation for testing
             },
         });
 
-        // Email Sending Function
-        async function sendEmail({ to, subject, text }) {
-            try {
-                const mailOptions = {
-                    from: 'no-reply@example.com', // Sender's email address
-                    to, // Recipient's email address
-                    subject, // Email subject
-                    text, // Email content
-                };
-
-                const result = await transporter.sendMail(mailOptions);
-                console.log('Email sent:', result.messageId);
-                return result;
-            } catch (error) {
-                console.error('Error sending email:', error);
-                throw error;
-            }
-        }
-
-        // API Endpoint to Handle Contact Form
+        // API Endpoint to send email
         app.post('/send-email', async (req, res) => {
-            const { name, email, phone, message } = req.body;
+            const { to, subject, text, html } = req.body;
+
+            // Email options
+            const mailOptions = {
+                from: '"Modern Code Hub" <harshbpanchal98@gmail.com>', // Sender address
+                to, // Recipient address
+                subject, // Subject line
+                text, // Plain text body
+                html, // HTML body
+            };
 
             try {
-                // Send confirmation email to the user
-                await sendEmail({
-                    to: email,
-                    subject: 'Thank you for reaching out!',
-                    text: `Hi ${name},\n\nThank you for contacting us. We will get back to you shortly.\n\nBest Regards,\nModern Code Hub Team`,
-                });
-
-                // Send notification email to admin
-                await sendEmail({
-                    to: 'admin-email@example.com', // Replace with admin's email
-                    subject: 'New Contact Form Submission',
-                    text: `New contact form submission:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`,
-                });
-
-                res.status(200).json({ message: 'Emails sent successfully!' });
+                // Send the email
+                const info = await transporter.sendMail(mailOptions);
+                console.log(`Email sent: ${info.response}`);
+                res.status(200).json({ message: 'Email sent successfully', info });
             } catch (error) {
-                console.error('Error in /send-email route:', error);
-                res.status(500).json({ message: 'Failed to send emails', error: error.message });
+                console.error(`Error occurred: ${error.message}`);
+                res.status(500).json({ message: 'Error sending email', error: error.message });
             }
         });
 
-        // Start the Server
-        const PORT = process.env.PORT || 5000;
+        // Start the server
+        const PORT = process.env.PORT || 3000;
         app.listen(PORT, () => {
-            console.log(`Server is running on port ${PORT}`);
+            console.log(`Server running on port ${PORT}`);
         });
+
+
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
