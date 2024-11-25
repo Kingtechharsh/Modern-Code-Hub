@@ -84,6 +84,20 @@
                 margin-bottom: 5px;
             }
         }
+
+        .navbar .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.5rem 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar .btn {
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+        }
         /* Appointment Section */
         .appointment-section {
             padding: 50px 20px;
@@ -233,22 +247,19 @@
 </head>
 <body>
 
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="img/logo.png" alt="Modern Code Hub Logo" style="height: 40px; width: auto;" class="me-2">
-                <!-- Adjust height and width as needed -->
                 Modern Code Hub
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="#Home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#about">About</a>
@@ -262,17 +273,20 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="appointment.html">Make an Appoinment</a>
+                        <a class="nav-link" href="appointment.html">Make an Appointment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="tel:+18622647261" class="btn btn-sm btn-warning ms-2 d-lg-inline-flex align-items-center">
+                            <i class="material-icons me-2">phone</i>862-264-7261
+                        </a>
                     </li>
                 </ul>
-                <a href="tel:+18622647261" class="btn btn-sm btn-warning ms-2 d-none d-lg-inline-flex align-items-center">
-                    <i class="material-icons me-2">phone</i>862-264-7261
-                </a>
             </div>
         </div>
     </nav>
+
+
     <!-- Appointment Section -->
     <section class="appointment-section">
         <div class="appointment-container">
