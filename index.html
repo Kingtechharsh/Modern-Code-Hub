@@ -30,7 +30,7 @@
             font-size: 1.5rem;
             font-weight: bold;
             text-decoration: none;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             transition: color 0.3s ease-in-out;
         }
 
@@ -242,71 +242,70 @@
                     background-color: #ff4500;
                 }
 
-        /* Footer */
-        .footer {
-            background-color: black;
-            color: #ddd;
-            padding: 40px 20px;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
+                .footer {
+    background-color: black;
+    color: #ddd;
+    padding: 40px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    text-align: center; /* Center text for smaller screens */
+}
 
-            .footer h3 {
-                color: #fff;
-                margin-bottom: 15px;
-                font-size: 1.2rem;
-            }
+.footer-section {
+    flex: 1;
+    min-width: 200px; /* Ensures sections stack well on smaller screens */
+}
 
-        .footer-section {
-            flex: 1;
-            min-width: 200px;
-        }
+.footer-logo {
+    max-width: 150px; /* Set a maximum width for the logo */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 auto 20px; /* Center the logo and add spacing below */
+    display: block;
+}
 
-            .footer-section a {
-                color: #ddd;
-                text-decoration: none;
-                display: block;
-                margin-bottom: 10px;
-                transition: color 0.3s;
-            }
+.footer-section h3 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
 
-                .footer-section a:hover {
-                    color: #fff;
-                }
+.footer-section a {
+    color: #ddd;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+}
 
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #fff;
-        }
+.footer-section a:hover {
+    color: #fff;
+}
 
-        .footer-map iframe {
-            width: 100%;
-            height: 150px;
-            border: none;
-            border-radius: 8px;
-        }
-        /* Responsive Design */
-        @media (max-width: 900px) {
-            .project-cards {
-                grid-template-columns: 1fr; /* Stack cards on smaller screens */
-            }
-        }
-        /* Service Card Container */
-        .service-card {
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-            border-radius: 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+.footer-map iframe {
+    width: 100%;
+    height: 150px;
+    border: none;
+    border-radius: 8px;
+}
 
-            .service-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            }
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column; /* Stack sections vertically */
+        text-align: center; /* Center-align all content */
+    }
+
+    .footer-logo {
+        max-width: 100px; /* Smaller logo size on mobile */
+    }
+
+    .footer-section {
+        margin-bottom: 20px; /* Add spacing between sections */
+    }
+}
+
 
         /* Image Styling */
         .service-image {
@@ -361,17 +360,29 @@
                 margin: 0.5rem 0;
             }
         }
+        .logo-img {
+    height: 70px; /* Larger default size */
+    width: auto; /* Maintain aspect ratio */
+    transition: transform 0.3s ease;
+    transform: scale(2.5); /* Smooth transition effect */
+}
+
+.logo-img:hover {
+    transform: scale(3); /* Increase size by 20% on hover */
+}
+  
 
     </style>
 </head>
 <body>
     <!-- Navbar -->
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="img/logo.png" alt="Modern Code Hub Logo" style="height: 40px; width: auto;" class="me-2">
-                Modern Code Hub
+            <a class="navbar-brand d-flex align-items-center" href="#" style="gap: 10px; text-decoration: none;">
+                <img src="img/MchLogo1.png" alt="Modern Code Hub Logo" 
+                     style="height: 70;; width: auto; transition: transform 0.3s ease;" 
+                     class="logo-img me-2">
+              
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -885,13 +896,12 @@
         </div>
     </section>
 
-    <!-- Footer Section -->
     <footer class="footer">
         <!-- Logo or Name Section -->
-        <div class="footer-section">
-            <img src="img/Logo2.PNG" alt="Modern Code Hub Logo"> <!-- Replace with your actual logo path -->
+        <div class="footer-section text-center">
+            <img src="img/MchLogo1.png" alt="Modern Code Hub Logo" class="footer-logo">
         </div>
-
+    
         <!-- Menu Section -->
         <div class="footer-section">
             <h3>Menu</h3>
@@ -901,7 +911,7 @@
             <a href="#services">Services</a>
             <a href="#contact">Contact</a>
         </div>
-
+    
         <!-- Contact Section -->
         <div class="footer-section">
             <h3>Contact</h3>
@@ -910,17 +920,17 @@
                 Springfield, Illinois 62712<br>
                 United States
             </p>
-            <a href="mailto:hpanchal2017@gmail.com">hpanchal2017@gmail.com</a>
+            <a href="mailto:hpanchal2017@gmail.com">hpanchal2017@gmail.com</a><br>
             <a href="tel:217-862-4120">217-862-4120</a>
         </div>
-
+    
         <!-- Directions Section -->
         <div class="footer-section footer-map">
             <h3>Directions</h3>
-            <!-- Embed Google Maps iframe -->
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509398!2d144.95565131531875!3d-37.81732797975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f0028fbb%3A0x5045675218ce6e0!2sVictoria!5e0!3m2!1sen!2sau!4v1614243521683!5m2!1sen!2sau" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </footer>
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
