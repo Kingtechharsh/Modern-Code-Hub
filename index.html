@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <title>Modern Code Hub</title>
     <style>
         body {
@@ -78,17 +79,17 @@
             }
         }
         /* Hero Section */
-        .hero {
-            height: 70vh; /* Set a more controlled height */
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/modern-office-design.png')  fixed;
-            background-size: contain; /* Keeps image proportional */
-            width:100%;
-            display: grid;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            padding: 20px;
-        }
+    .hero {
+        height: 70vh; /* Adjust the height as needed */
+        background: url('img/modern-office-design.png') no-repeat center center; /* Ensures it does not repeat */
+        background-size: cover; /* Ensures the image covers the entire section */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+        padding: 20px;
+    }
 
         .hero-content {
             max-width: 9100px;
@@ -312,7 +313,7 @@
             position: relative;
             width: 100%;
             height: 0;
-            padding-top: 56.25%; /* Aspect ratio 16:9 */
+            padding-top: 30.25%; /* Aspect ratio 16:9 */
             overflow: hidden;
         }
 
@@ -409,7 +410,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="tel:+18622647261" class="btn btn-sm btn-warning ms-2 d-lg-inline-flex align-items-center">
-                            <i class="material-icons me-2">phone</i>862-264-7261
+                            <i class="material-icons me-2">phone</i>Call US
                         </a>
                     </li>
                 </ul>
@@ -690,7 +691,7 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
+
     <!-- Pricing Section -->
     <section class="pricing" id="pricing">
         <div class="container">
@@ -704,7 +705,7 @@
                     <div class="card text-center border-0 shadow-sm p-4">
                         <h5 class="card-title fw-bold mb-3">Basic</h5>
                         <p class="text-muted">Perfect for small businesses or individuals starting their journey.</p>
-                        <h3 class="text-primary fw-bold">$49/month</h3>
+                        <h3 class="text-primary fw-bold">$25/month</h3>
                         <ul class="list-unstyled mt-3 mb-4">
                             <li><i class="material-icons text-success me-2">check_circle</i>Responsive Website</li>
                             <li><i class="material-icons text-success me-2">check_circle</i>Email Support</li>
@@ -718,7 +719,7 @@
                     <div class="card text-center border-0 shadow-lg p-4">
                         <h5 class="card-title fw-bold mb-3">Standard</h5>
                         <p class="text-muted">Ideal for growing businesses with advanced needs.</p>
-                        <h3 class="text-primary fw-bold">$99/month</h3>
+                        <h3 class="text-primary fw-bold">$49/month</h3>
                         <ul class="list-unstyled mt-3 mb-4">
                             <li><i class="material-icons text-success me-2">check_circle</i>Everything in Basic</li>
                             <li><i class="material-icons text-success me-2">check_circle</i>Priority Support</li>
@@ -733,7 +734,7 @@
                     <div class="card text-center border-0 shadow-sm p-4">
                         <h5 class="card-title fw-bold mb-3">Premium</h5>
                         <p class="text-muted">For enterprises and businesses that need the best.</p>
-                        <h3 class="text-primary fw-bold">$199/month</h3>
+                        <h3 class="text-primary fw-bold">$149/month</h3>
                         <ul class="list-unstyled mt-3 mb-4">
                             <li><i class="material-icons text-success me-2">check_circle</i>Everything in Standard</li>
                             <li><i class="material-icons text-success me-2">check_circle</i>Dedicated Account Manager</li>
@@ -855,7 +856,7 @@
                     <div class="team-member">
                         <img src="img/Harsh.png" alt="Harsh Panchal">
                         <h5>Harsh Panchal</h5>
-                        <p>Founder and CEO ensuring everything runs smoothly from inception to completion.</p>
+                        <p>Co-founder and CEO ensuring everything runs smoothly from inception to completion.</p>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -1029,6 +1030,22 @@
     </script>
 
 
+    <script>
+        // Close navbar on click of any link
+        document.addEventListener('DOMContentLoaded', function () {
+            const navbarNav = document.getElementById('navbarNav');
+            const navLinks = navbarNav.querySelectorAll('.nav-link, .btn');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    const navbarCollapse = new bootstrap.Collapse(navbarNav, {
+                        toggle: true
+                    });
+                    navbarCollapse.hide();
+                });
+            });
+        });
+    </script>
 
 
 </body>

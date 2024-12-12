@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Modern Code Hub</title>
 
     <title>Make an Appointment</title>
     <style>
@@ -243,15 +244,101 @@
             border: none;
             border-radius: 8px;
         }
+        /* Responsive Design for Mobile */
+
+        /* Responsive Design for Mobile */
+        @media (max-width: 768px) {
+            .footer {
+                flex-direction: column; /* Stack sections vertically */
+                text-align: center; /* Center-align all content */
+            }
+
+            .footer-logo {
+                max-width: 100px; /* Smaller logo size on mobile */
+            }
+
+            .footer-section {
+                margin-bottom: 20px; /* Add spacing between sections */
+            }
+        }
+
+
+
+        /* Image Styling */
+        .service-image {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-top: 30.25%; /* Aspect ratio 16:9 */
+            overflow: hidden;
+        }
+
+            .service-image img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        /* Event Box Styling */
+        .event-box {
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+            color: #fff;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .service-card:hover .event-box {
+            opacity: 1;
+        }
+        .navbar .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.5rem 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar .btn {
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+        }
+        .logo-img {
+    height: 70px; /* Larger default size */
+    width: auto; /* Maintain aspect ratio */
+    transition: transform 0.3s ease;
+    transform: scale(2.5); /* Smooth transition effect */
+}
+
+.logo-img:hover {
+    transform: scale(3); /* Increase size by 20% on hover */
+}
     </style>
 </head>
 <body>
 
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="img/logo.png" alt="Modern Code Hub Logo" style="height: 40px; width: auto;" class="me-2">
-                Modern Code Hub
+            <a class="navbar-brand d-flex align-items-center" href="#" style="gap: 10px; text-decoration: none;">
+                <img src="img/MchLogo1.png" alt="Modern Code Hub Logo" 
+                     style="height: 70;; width: auto; transition: transform 0.3s ease;" 
+                     class="logo-img me-2">
+              
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -259,33 +346,32 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#Home">Home</a>
+                        <a class="nav-link" href="index.html#Home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
+                        <a class="nav-link" href="index.html#about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#services">Services</a>
+                        <a class="nav-link" href="index.html#services">Services</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Projects.html">Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
+                        <a class="nav-link" href="index.html#contact">Contact</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="appointment.html">Make an Appointment</a>
                     </li>
                     <li class="nav-item">
                         <a href="tel:+18622647261" class="btn btn-sm btn-warning ms-2 d-lg-inline-flex align-items-center">
-                            <i class="material-icons me-2">phone</i>862-264-7261
+                            <i class="material-icons me-2">phone</i>Call US
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
 
     <!-- Appointment Section -->
     <section class="appointment-section">
@@ -345,20 +431,20 @@
     <!-- Footer Section -->
     <footer class="footer">
         <!-- Logo or Name Section -->
-        <div class="footer-section">
-            <div class="footer-logo">Mordern Code Hub</div>
+        <div class="footer-section text-center">
+            <img src="img/MchLogo1.png" alt="Modern Code Hub Logo" class="footer-logo">
         </div>
-
+    
         <!-- Menu Section -->
         <div class="footer-section">
             <h3>Menu</h3>
-            <a href="index.html">Home</a>
-            <a href="appointment.html">Schedule Appointment</a>
-            <a href="index.html">Complete Intake</a>
-            <a href="index.html">Services</a>
-            <a href="index.html">Contact</a>
+            <a href="#home">Home</a>
+            <a href="#appointment">Schedule Appointment</a>
+            <a href="#intake">Complete Intake</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
         </div>
-
+    
         <!-- Contact Section -->
         <div class="footer-section">
             <h3>Contact</h3>
@@ -367,18 +453,34 @@
                 Springfield, Illinois 62712<br>
                 United States
             </p>
-            <a href="mailto:hpanchal2017@gmail.com">hpanchal2017@gmail.com</a>
+            <a href="mailto:hpanchal2017@gmail.com">hpanchal2017@gmail.com</a><br>
             <a href="tel:217-862-4120">217-862-4120</a>
         </div>
-
+    
         <!-- Directions Section -->
         <div class="footer-section footer-map">
             <h3>Directions</h3>
-            <!-- Embed Google Maps iframe -->
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509398!2d144.95565131531875!3d-37.81732797975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f0028fbb%3A0x5045675218ce6e0!2sVictoria!5e0!3m2!1sen!2sau!4v1614243521683!5m2!1sen!2sau" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Close navbar on click of any link
+        document.addEventListener('DOMContentLoaded', function () {
+            const navbarNav = document.getElementById('navbarNav');
+            const navLinks = navbarNav.querySelectorAll('.nav-link, .btn');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    const navbarCollapse = new bootstrap.Collapse(navbarNav, {
+                        toggle: true
+                    });
+                    navbarCollapse.hide();
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
